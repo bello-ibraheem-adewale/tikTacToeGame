@@ -1,0 +1,204 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+
+}
+
+
+section{
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid black;
+    align-items: center;
+    background-color: purple;
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-evenly;
+    width: 400px;
+
+}
+
+nav input{
+    background-color: black;
+    width: 150px;
+    height: 40px;
+    color: rgb(58, 16, 182);
+    border: none;
+    flex-wrap: wrap;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.nine{
+    border: 3px solid black;
+    width: 350px;
+    height: 320px;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    column-gap: 2px;
+    row-gap: 2px;
+    align-items: center;
+    text-align: center;
+
+   
+
+
+}
+
+.box{
+    
+    background-color: black;
+    font-size: 50px;
+    height: 100px;
+    color: orangered;
+    text-align: center;
+
+}
+
+/* main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 50px;
+    overflow: hidden;
+} */
+
+
+#play{
+    text-align: center;
+    background-color: black;
+    width: 400px;
+    height: 50px;
+    overflow: hidden;
+    padding-top: 10px;
+    font-family: initial;
+    border-radius: 10px;
+    color: rgb(86, 11, 161);
+    border: 1px solid white;
+    font-size: 25px;
+    
+    
+}
+
+#resetBtn{
+    margin-top: 20px;
+    width: 180px;
+    height: 60px;
+    border: 1px solid wheat;
+    font-size: 30px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#resetBtn:hover {
+    background-color: goldenrod;
+}
+
+
+@media (max-width: 950px){
+
+
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    section{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow-x: hidden;
+        height: 100vh;
+    }
+
+    h1{
+        font-size: 30px;
+        margin-top: 20px;
+        color: white;
+        height: 80px;
+    }
+
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+
+    }
+    #play{
+        
+        
+        /* position: absolute; */
+        width: 270px;
+        height: 170px;
+        margin-top: 50px;
+        font-size: 27px;
+
+        /* left: 50px; */
+         /* top: 80px; */
+    }
+
+    nav input{
+        padding: 30px;
+        width: 200px;
+        border-radius: 10px;
+        font-size: 18px;
+        color: rgb(129, 51, 51);
+        /* flex: 1; */
+         margin: 50px;
+         display: none;
+        margin-top: 100px;
+        background-color: darkgreen;
+    }
+
+
+    .nine{
+        width: 250px;
+        height: 800px;
+        
+
+        
+    }
+
+    .box{
+        height: 100px;
+        overflow: hidden;
+        background-color: white;
+    }
+
+   
+
+    #resetBtn{
+        margin-bottom: 50px;
+        height: 150px;
+        
+    }
+
+
+ 
+
+
+}
