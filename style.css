@@ -1,204 +1,165 @@
-*{
+/* Universal Reset */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
-
+    /* overflow-x: hidden; */
 }
 
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #3b3b3b; /* Dark background for contrast */
+    color: #f0f0f0;
+}
 
-section{
+section {
     width: 100vw;
-    height: 100vh;
-    border: 1px solid black;
-    align-items: center;
-    background-color: purple;
+    height: auto;
+    background-color: #6a1b9a; /* Dark purple for visual comfort */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-h1{
-    color: black;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+h1 {
+    color: #e1e1e1;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 5vw; /* Dynamic scaling */
+    margin-bottom: 20px;
+    text-align: center;
 }
 
-nav{
+nav {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 15px;
     margin-top: 10px;
-    justify-content: space-evenly;
-    width: 400px;
-
+    width: 100%;
+    max-width: 500px;
 }
 
-nav input{
-    background-color: black;
-    width: 150px;
-    height: 40px;
-    color: rgb(58, 16, 182);
+nav input {
+    background-color: #282828;
+    width: min(40%, 200px);
+    height: 45px;
+    color: #a5d6a7;
     border: none;
-    flex-wrap: wrap;
-    border-radius: 30px;
+    border-radius: 25px;
     text-align: center;
-    font-size: 15px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
+    font-size: 1rem;
+    font-family: inherit;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
-.nine{
-    border: 3px solid black;
-    width: 350px;
-    height: 320px;
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 3fr);
-    column-gap: 2px;
-    row-gap: 2px;
-    align-items: center;
-    text-align: center;
-
-   
-
-
+nav input:hover,
+nav input:focus {
+    background-color: #4caf50;
+    transform: scale(1.05);
+    color: #ffffff;
 }
 
-.box{
-    
-    background-color: black;
-    font-size: 50px;
-    height: 100px;
-    color: orangered;
-    text-align: center;
-
-}
-
-/* main{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    height: 50px;
-    overflow: hidden;
-} */
-
-
-#play{
-    text-align: center;
-    background-color: black;
-    width: 400px;
-    height: 50px;
-    overflow: hidden;
-    padding-top: 10px;
-    font-family: initial;
-    border-radius: 10px;
-    color: rgb(86, 11, 161);
-    border: 1px solid white;
-    font-size: 25px;
-    
-    
-}
-
-#resetBtn{
+.nine {
+    width: min(90%, 350px);
+    aspect-ratio: 1 / 1;
     margin-top: 20px;
-    width: 180px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #4a148c;
+}
+
+.box {
+    background-color: #282828;
+    font-size: 4vw; /* Dynamic scaling */
+    color: #ff8a65;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.box:hover {
+    background-color: #6a1b9a;
+}
+
+#play {
+    text-align: center;
+    background-color: #212121;
+    width: min(90%, 400px);
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 10px;
+    color: #ffb74d;
+    font-size: 1.2rem;
+    border: 2px solid #9e9e9e;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#resetBtn {
+    margin-top: 20px;
+    width: min(90%, 200px);
     height: 60px;
-    border: 1px solid wheat;
-    font-size: 30px;
+    font-size: 1.2rem;
     border-radius: 10px;
     color: white;
-    font-weight: bold;
-    background-color: black;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #424242;
+    border: 2px solid #ffab91;
+    transition: background-color 0.3s ease, transform 0.2s;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #resetBtn:hover {
-    background-color: goldenrod;
+    background-color: #ff7043;
+    transform: scale(1.05);
 }
 
-
-@media (max-width: 950px){
-
-
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    section{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow-x: hidden;
-        height: 100vh;
-    }
-
-    h1{
-        font-size: 30px;
+/* Responsive Styles */
+@media (max-width: 950px) {
+    h1 {
+        font-size: 8vw;
+        color: #e1e1e1;
         margin-top: 20px;
-        color: white;
-        height: 80px;
     }
 
-    nav{
-        display: flex;
+    nav {
         flex-direction: column;
-        align-items: center;
-        margin: 20px;
-
-    }
-    #play{
-        
-        
-        /* position: absolute; */
-        width: 270px;
-        height: 170px;
-        margin-top: 50px;
-        font-size: 27px;
-
-        /* left: 50px; */
-         /* top: 80px; */
+        width: 100%;
     }
 
-    nav input{
-        padding: 30px;
-        width: 200px;
-        border-radius: 10px;
-        font-size: 18px;
-        color: rgb(129, 51, 51);
-        /* flex: 1; */
-         margin: 50px;
-         display: none;
-        margin-top: 100px;
-        background-color: darkgreen;
+    #play {
+        width: min(100%, 90%);
+        font-size: 1.4rem;
     }
 
-
-    .nine{
-        width: 250px;
-        height: 800px;
-        
-
-        
+    nav input {
+        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
+        margin-top: 15px;
     }
 
-    .box{
-        height: 100px;
-        overflow: hidden;
-        background-color: white;
+    .nine {
+        width: 100%;
+        padding: 5px;
+        grid-template-columns: repeat(3, 1fr);
     }
 
-   
-
-    #resetBtn{
-        margin-bottom: 50px;
-        height: 150px;
-        
+    .box {
+        height: 90px;
+        font-size: 6vw;
     }
 
-
- 
-
-
+    #resetBtn {
+        width: 90%;
+        height: 55px;
+        font-size: 1.1rem;
+        margin-bottom: 30px;
+    }
 }

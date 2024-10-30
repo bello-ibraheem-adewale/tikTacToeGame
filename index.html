@@ -1,66 +1,36 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-   <!-- <input onchange="drbee()" type="text"> -->
-   <!-- <button o>click me</button> -->
-    <!-- <div id="para"></div> -->
-
-    <!-- <div onclick="drbee(event)" style="border: 2px solid red; background-color: black;">
-
-<section style="background-color: gold;">
-    <h2 style="background-color: aqua;">drbee the developer world wide</h2>
-</section>
-
-    </div>
-     -->
     <section>
-
-       <marquee behavior="right" direction=""> <h1>TIK TAC TOE GAME</h1></marquee>
-
-
-  
-     <h2 id="play">let's play !!!</h2>
-            
+        <h1>TIC TAC TOE GAME</h1>
+        <h2 id="play">Let's play!</h2>
 
         <nav>
-            <input class="drbee" onclick="drbee" type="text"  placeholder=" First Player Name">
-            <input class="drbee" onclick="drbee" type="text"  placeholder=" Second Player Name">
+            <input id="playerXName" type="text" placeholder="First Player Name">
+            <input id="playerOName" type="text" placeholder="Second Player Name">
         </nav>
+
         <div class="nine">
-      
-        
+            <p id="0" class="box"></p>
+            <p id="1" class="box"></p>
+            <p id="2" class="box"></p>
+            <p id="3" class="box"></p>
+            <p id="4" class="box"></p>
+            <p id="5" class="box"></p>
+            <p id="6" class="box"></p>
+            <p id="7" class="box"></p>
+            <p id="8" class="box"></p>
+        </div>
 
-
-        <p id="0" class="box"></p>
-        <p id="1" class="box"></p>
-        <p id="2" class="box"></p>
-        <p id="3" class="box"></p>
-        <p id="4" class="box"></p>
-        <p id="5" class="box"></p>
-        <p id="6" class="box"></p>
-        <p id="7" class="box"></p>
-        <p id="8" class="box"></p>
-        
-
-    </div>
-
-    <input type="button" value="RESTART" id="resetBtn">
-    
+        <button id="resetBtn">RESTART</button>
     </section>
 
-
-
-  
-
     <script src="main.js"></script>
-
-    
-
 </body>
 </html>

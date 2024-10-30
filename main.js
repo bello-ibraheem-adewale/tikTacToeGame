@@ -1,143 +1,103 @@
-
 const boxes = Array.from(document.getElementsByClassName('box'));
 const resetBtn = document.getElementById('resetBtn');
-resetBtn.addEventListener('click',reset);
 const playText = document.getElementById('play');
-const areas = [null, null, null, null, null, null, null, null, null];
-const o_text = "O";
-const x_text = "X";
-let currentPlayer = x_text; 
+const areas = Array(9).fill(null);
 let winBoxesIds = [];
 
-var ade = "O"
-var bola = "X"
-var name = ade + bola
-var name = document.getElementById('play').value
+// Player names and symbols
+let playerXName, playerOName;
+let playerXSymbol = "X";
+let playerOSymbol = "O";
+let currentPlayerName, currentPlayerSymbol;
 
-
-function blindClickEvent(){
-    boxes.forEach(box => {
-        box.addEventListener('click',handleBoxClick);
-
-    })
-
-   
-
-    
+// Fetch player names from input fields
+function setPlayerNames() {
+    playerXName = document.getElementById('playerXName').value || "Player 1";
+    playerOName = document.getElementById('playerOName').value || "Player 2";
+    currentPlayerName = playerXName;
+    currentPlayerSymbol = playerXSymbol;
 }
-blindClickEvent();
 
-function handleBoxClick(e){
-    
+// Initialize the game
+function initializeGame() {
+    setPlayerNames();
+    boxes.forEach(box => box.addEventListener('click', handleBoxClick));
+    resetBtn.addEventListener('click', resetGame);
+}
 
-    if(winBoxesIds.length > 0){
-        return
-    }
+function handleBoxClick(e) {
+    if (winBoxesIds.length > 0) return; // Game already won, no further moves
+
     const id = e.target.id;
-    if(!areas[id]){
-        areas[id] = currentPlayer;
-        e.target.innerHTML = currentPlayer;
+    if (!areas[id]) {
+        areas[id] = currentPlayerSymbol;
+        e.target.innerHTML = currentPlayerSymbol;
 
-        if(hasPlayerWon(currentPlayer)){
-
-            playText.innerHTML =  currentPlayer +' has won !!!';
+        if (hasPlayerWon(currentPlayerSymbol)) {
+            playText.innerHTML = `${currentPlayerName} (${currentPlayerSymbol}) has won!`;
             playText.style.background = "lightgreen";
-            changeWinBoxesBg();
-            return
+            highlightWinBoxes();
+            return;
         }
 
-        
-        currentPlayer = currentPlayer == o_text ? x_text : o_text;
-    }
-}
-
-function hasPlayerWon(cPlayer) {
-    if(areas[0] == cPlayer){
-        if(areas[1] == cPlayer && areas[2] == cPlayer){
-           winBoxesIds [0,1,2];
-           return true; 
+        // Check for a draw
+        if (areas.every(area => area !== null)) {
+            playText.innerHTML = "It's a draw!";
+            playText.style.background = "orange";
+            return;
         }
 
-        if(areas[3] == cPlayer && areas[6] == cPlayer){
-           winBoxesIds [0,3,6];
-           return true; 
-        }
-
-        if(areas[4] == cPlayer && areas[8] == cPlayer){
-           winBoxesIds [0,4,8];
-           return true; 
-        }
-
-
-    }
-
-    if(areas[4] == cPlayer){
-        if(areas[1] == cPlayer && areas[7] == cPlayer){
-            winBoxesIds = [4,1,7];
-            return true
-        }
-
-
-        if(areas[2] == cPlayer && areas[6] == cPlayer){
-            winBoxesIds = [4,2,6];
-            return true
-        }
-
-        if(areas[3] == cPlayer && areas[5] == cPlayer){
-            winBoxesIds = [4,3,5];
-            return true
+        // Switch players
+        if (currentPlayerSymbol === playerXSymbol) {
+            currentPlayerSymbol = playerOSymbol;
+            currentPlayerName = playerOName;
+        } else {
+            currentPlayerSymbol = playerXSymbol;
+            currentPlayerName = playerXName;
         }
     }
+}
 
+// Check if the current player has won
+function hasPlayerWon(cPlayerSymbol) {
+    const winConditions = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+        [0, 3, 6], [1, 4, 7], [2, 5, 8]  // Columns
+    ];
 
-    if(areas[8] == cPlayer){
-        if(areas[7] == cPlayer && areas[6] == cPlayer){
-            winBoxesIds = [8,7,6];
-            return true
+    for (let condition of winConditions) {
+        const [a, b, c] = condition;
+        if (areas[a] === cPlayerSymbol && areas[b] === cPlayerSymbol && areas[c] === cPlayerSymbol) {
+            winBoxesIds = condition;
+            return true;
         }
-
-        if(areas[5] == cPlayer && areas[2] == cPlayer){
-            winBoxesIds = [8,5,2];
-            return true
-        }
-        
-
-
-    
+    }
+    return false;
 }
 
+// Highlight winning boxes
+function highlightWinBoxes() {
+    winBoxesIds.forEach(id => {
+        boxes[id].style.background = 'lightgreen';
+    });
+    boxes.forEach(box => box.style.cursor = 'not-allowed');
 }
 
-
-function changeWinBoxesBg(){
-    winBoxesIds.forEach(id=>{
-        boxes[id].style.background = 'white'
-
-    })
-
-    boxes.forEach(box=>{
-        box.style.cursor = 'not-allowed'
-    })
-}
-
-
-function reset(){
-
+// Reset the game
+function resetGame() {
     winBoxesIds = [];
-    areas.forEach((val, index) => {
-        areas[index] = null;
-    })
-
-    boxes.forEach(box=> {
+    areas.fill(null);
+    boxes.forEach(box => {
         box.innerHTML = '';
         box.style.background = '';
-        box.style.cursor = 'pointer'
-    })
+        box.style.cursor = 'pointer';
+    });
+    playText.innerHTML = "Let's play...";
+    playText.style.background = '';
 
-    playText.innerHTML = " let's play...";
-    playText.style.background = "";
-    currentPlayer = o_text;
-
+    // Reinitialize player names and symbols
+    setPlayerNames();
 }
 
-
+// Start the game
+initializeGame();
